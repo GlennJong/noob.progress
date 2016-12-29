@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>NOOB.progress</title>
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+	<link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="image-grid grid">
+			<div class="grid-item"><img src="images/01.jpg" alt=""></div>
+			<div class="grid-item"><img src="images/02.jpg" alt=""></div>
+			<div class="grid-item"><img src="images/03.jpg" alt=""></div>
+			<div class="grid-item"><img src="images/04.jpg" alt=""></div>
+			<div class="grid-item"><img src="images/05.jpg" alt=""></div>
+			<div class="grid-item"><img src="images/06.jpg" alt=""></div>
+			<div class="grid-item"><img src="images/07.jpg" alt=""></div>
+			<div class="grid-item"><img src="images/08.jpg" alt=""></div>
+			<div class="grid-item"><img src="images/09.jpg" alt=""></div>
+			<div class="grid-item"><img src="images/10.jpg" alt=""></div>
+			<div class="grid-item"><img src="images/11.jpg" alt=""></div>
+			<div class="grid-item"><img src="images/12.jpg" alt=""></div>
+		</div>
+	</div>
+	<div class="noob-progress">
+		<div class="noob-progress-frame">
+			<div class="noob-progress-inset"></div>
+		</div>
+	</div>
+	<script>
+		// Progress
+		function Progress (elem) {
+	    $elem = $(elem)
+	    var total  = $elem.length;
+	    var finish = 0;
+	    $elem.one('load', loaded)
+				.each(chechCompleted)
+
+	    function chechCompleted() {
+        if (this.complete) {
+            loaded.call(this)
+        }
+	    }
+	    function loaded() {
+        finish += 1
+        var percent = finish / total * 100
+        $('.noob-progress .noob-progress-inset').width(percent + '%')
+        if (percent >= 100) {
+            $('.noob-progress').addClass('loaded')
+        }
+	    }
+		}
+		Progress('img[src]')
+	</script>	
+</body>
+</html>

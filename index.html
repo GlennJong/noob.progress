@@ -31,25 +31,25 @@
 	<script>
 		// Progress
 		function Progress (elem) {
-	    $elem = $(elem)
-	    var total  = $elem.length;
-	    var finish = 0;
-	    $elem.one('load', loaded)
-				.each(chechCompleted)
+			$elem = $(elem)
+			var total  = $elem.length;
+			var finish = 0;
+			$elem.one('load', loaded)
+			.each(chechCompleted)
 
-	    function chechCompleted() {
-        if (this.complete) {
-            loaded.call(this)
-        }
-	    }
-	    function loaded() {
-        finish += 1
-        var percent = finish / total * 100
-        $('.noob-progress .noob-progress-inset').width(percent + '%')
-        if (percent >= 100) {
-            $('.noob-progress').addClass('loaded')
-        }
-	    }
+			function chechCompleted() {
+				if (this.complete) {
+	    		loaded.call(this)
+			  }
+			}
+			function loaded() {
+				finish += 1
+				var percent = finish / total * 100
+				$('.noob-progress .noob-progress-inset').width(percent + '%')
+				if (percent >= 100) {
+			    $('.noob-progress').addClass('loaded')
+				}
+			}
 		}
 		Progress('img[src]')
 	</script>	
